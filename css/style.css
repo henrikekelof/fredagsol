@@ -1,0 +1,141 @@
+
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: 300;
+   margin: 0;
+   padding: 0;
+}
+
+h1 {
+    font-size: 1vw;
+}
+
+.container {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 5%;
+    font-size: 14vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@-webkit-keyframes flash {
+    0% {
+        background-color: Yellow;
+        color: #000;
+        opacity:1;
+    }
+    22% {
+        background-color: Yellow;
+        color: #000;
+    }
+    77% {
+        background-color: Red;
+        color: #FFF;
+    }
+    100% {
+        background-color: #777;
+        color: #FFF;
+    }
+}
+
+@keyframes flash {
+    0% {
+        background-color: Yellow;
+        color: #000;
+        opacity:1;
+    }
+    22% {
+        background-color: Yellow;
+        color: #000;
+    }
+    77% {
+        background-color: Red;
+        color: #FFF;
+    }
+    100% {
+        background-color: #777;
+        color: #FFF;
+    }
+}
+
+body.party {
+    -webkit-animation-name: flash;
+    -webkit-animation-duration: 900ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-name: flash;
+    animation-duration: 900ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
+
+#now,
+#not-now {
+    font-size: 10vw;
+    text-align: center;
+}
+
+#now b,
+#not-now b {
+    font-size: 20vw;
+    text-align: center;
+}
+
+
+div.party {
+    font-size: 10vw;
+    text-align: center;
+}
+
+td div {
+    position: relative;
+    z-index: 1;
+}
+td div:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -0.025em;
+    border-bottom: .05em groove rgba(87, 87, 87, 0.9);
+}
+table {
+    width: 100%;
+}
+caption {
+    font-size: 5vw;
+    margin: 0 0 .5em;
+}
+th {
+    font-weight: 300;
+    font-size: 3vw;
+    text-transform:uppercase;
+}
+td {
+    width: 25%;
+    background: linear-gradient(to bottom, #141212 0%, #232323 100%);
+    color: #fff;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14vw;
+    font-weight: bold;
+    line-height: 1;
+    padding: .5em 0;
+    border-radius: .1em;
+}
+
+[role=contentinfo] {
+    position: fixed;
+    right: 0;
+    bottom: 1em;
+    left: 0;
+    text-align: center;
+}
