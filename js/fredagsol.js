@@ -16,18 +16,26 @@ var ÖL = ÖL || {};
 
     ÖL.fredagsÖl = fredagsÖl;
 
-    ÖL.getNextFredagsÖl = function () {
+    ÖL.getNextDatetime = function (weekTime) {
         var d = new Date();
-        d.setDate(d.getDate() + ((fredagsÖl.d + 7) - d.getDay()) % 7);
-        d.setHours(fredagsÖl.h);
-        d.setMinutes(fredagsÖl.m);
-        d.setSeconds(fredagsÖl.s);
+        d.setDate(d.getDate() + ((weekTime.d + 7) - d.getDay()) % 7);
+        d.setHours(weekTime.h);
+        d.setMinutes(weekTime.m);
+        d.setSeconds(weekTime.s);
         return d;
     };
 
-    ÖL.isFredagsÖl = function () {
+    ÖL.getNextFredagsÖl = function () {
+        return ÖL.getNextDatetime(ÖL.fredagsÖl);
+    };
+
+    ÖL.isTime = function (weekTime) {
         now = new Date();
-        return (now.getDay() === fredagsÖl.d && (now.getHours() > fredagsÖl.h || (now.getHours() === fredagsÖl.h && now.getMinutes() > fredagsÖl.m) || (now.getHours() === fredagsÖl.h && now.getMinutes() === fredagsÖl.m && now.getSeconds() >= fredagsÖl.s)));
+        return (now.getDay() === weekTime.d && (now.getHours() > weekTime.h || (now.getHours() === weekTime.h && now.getMinutes() > weekTime.m) || (now.getHours() === weekTime.h && now.getMinutes() === weekTime.m && now.getSeconds() >= weekTime.s)));
+    };
+
+    ÖL.isFredagsÖl = function () {
+        return ÖL.isTime(ÖL.fredagsÖl);
     };
 
 }(window, document));
