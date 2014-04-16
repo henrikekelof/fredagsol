@@ -29,7 +29,7 @@ var ÖL = ÖL || {};
         return ÖL.getNextDatetime(ÖL.fredagsÖl);
     };
 
-    ÖL.isTime = function (weekTime) {
+    ÖL.isTime = function (weekTime, oneHour) {
         var sameDay, sameHour, sameMinute, isAfterHour, isAfterMinute, isAfterSeconds;
         now = new Date();
         sameDay = now.getDay() === weekTime.d;
@@ -38,7 +38,7 @@ var ÖL = ÖL || {};
         isAfterHour = now.getHours() > weekTime.h;
         isAfterMinute = now.getMinutes() > weekTime.m;
         isAfterSeconds = now.getSeconds() >= weekTime.s;
-        return (sameDay && (isAfterHour || (sameHour && isAfterMinute) || (sameHour && sameMinute && isAfterSeconds)));
+        return (sameDay && ((isAfterHour && !oneHour) || (sameHour && isAfterMinute) || (sameHour && sameMinute && isAfterSeconds)));
     };
 
     ÖL.isFredagsÖl = function () {

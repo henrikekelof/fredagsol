@@ -65,7 +65,8 @@
             }
             fridayCounter = countdown(nextFriday);
             wednesdayCounter = countdown(nextWednesday);
-            fikaApproaching = wednesdayCounter.days < fridayCounter.days;
+            fikaApproaching = (wednesdayCounter.days < fridayCounter.days &&
+                               wednesdayCounter.hours < 1);
             displayTime(fikaApproaching ? wednesdayCounter : fridayCounter);
             displayLabel(fikaApproaching);
             requestAnimationFrame(run);

@@ -22,7 +22,7 @@ var FIKA = FIKA || {};
     };
 
     FIKA.isOnsdagsFika = function () {
-        return ÖL.isTime(FIKA.onsdagsFika);
+        return ÖL.isTime(FIKA.onsdagsFika, true);
     };
 
 }(window, document));
