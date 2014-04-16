@@ -30,8 +30,15 @@ var ÖL = ÖL || {};
     };
 
     ÖL.isTime = function (weekTime) {
+        var sameDay, sameHour, sameMinute, isAfterHour, isAfterMinute, isAfterSeconds;
         now = new Date();
-        return (now.getDay() === weekTime.d && (now.getHours() > weekTime.h || (now.getHours() === weekTime.h && now.getMinutes() > weekTime.m) || (now.getHours() === weekTime.h && now.getMinutes() === weekTime.m && now.getSeconds() >= weekTime.s)));
+        sameDay = now.getDay() === weekTime.d;
+        sameHour = now.getHours() === weekTime.h;
+        sameMinute = now.getMinutes() === weekTime.m;
+        isAfterHour = now.getHours() > weekTime.h;
+        isAfterMinute = now.getMinutes() > weekTime.m;
+        isAfterSeconds = now.getSeconds() >= weekTime.s;
+        return (sameDay && (isAfterHour || (sameHour && isAfterMinute) || (sameHour && sameMinute && isAfterSeconds)));
     };
 
     ÖL.isFredagsÖl = function () {
