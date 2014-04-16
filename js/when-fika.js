@@ -52,8 +52,9 @@
 
     function run() {
         var fikaApproaching;
-        if (ÖL.isFredagsÖl()) {
+        if (ÖL.isFredagsÖl() || FIKA.isOnsdagsFika()) {
             timerSet = false;
+            displayLabel(FIKA.isOnsdagsFika());
             doParty();
             interval = setInterval(run, 60000);
         } else {
