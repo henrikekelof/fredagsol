@@ -64,7 +64,7 @@ h1 {
     }
 }
 
-body.party {
+body.happening {
     -webkit-animation-name: flash;
     -webkit-animation-duration: 900ms;
     -webkit-animation-iteration-count: infinite;
@@ -89,7 +89,7 @@ body.party {
 }
 
 
-div.party {
+div.happening {
     font-size: 10vw;
     text-align: center;
 }

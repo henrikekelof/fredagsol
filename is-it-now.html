@@ -11,22 +11,17 @@
 
     <div class="container">
         <div id="now">
-            Is it Onsdagsfika?<br>
+            Is it <span id="now-label-1">...</span>?<br>
             <b>Yes!</b>
         </div>
         <div id="not-now">
-            Is it Onsdagsfika?<br>
+            Is it <span id="now-label-2">...</span>?<br>
             <b>No.</b>
         </div>
     </div>
 
-
-    <div role="contentinfo">
-        &copy; 2014 Henrik Ekelöf, Emil Wall
-    </div>
-
-<script src="js/fredagsol.js"></script>
-<script src="js/onsdagsfika.js"></script>
-<script src="js/is-it-fika.js"></script>
+<script src="js/lib/countdown.min.js"></script>
+<script src="js/happenings.js"></script>
+<script>HAPPENING.initIsItNow();</script>
 </body>
 </html>

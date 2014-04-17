@@ -2,24 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>When is the next Fredagsöl?</title>
+    <title>When is the next ... ?</title>
     <link rel="stylesheet" href="css/style.css">
     <meta name="robots" value="noindex, nofollow">
 </head>
 <body>
 
 
-    <div class="container" id="party">
-        <div class="party" id="partylabel">
-            Fredagsöl is now!
-        </div>
+    <div class="container" id="happening">
+        <div class="party"><span id="happeninglabel">...</span> is now!</div>
     </div>
 
     <div class="container" id="clock">
         <table>
-            <caption id="clocklabel">
-                Next fredagsöl:
-            </caption>
+            <caption>Next <span id="clocklabel">...</span>:</caption>
             <tr>
                 <td><div id="d"></div></td>
                 <td><div id="h"></div></td>
@@ -35,13 +31,9 @@
         </table>
     </div>
 
-    <div role="contentinfo">
-        &copy; 2014 Henrik Ekelöf, Emil Wall
-    </div>
-
 <script src="js/lib/countdown.min.js"></script>
-<script src="js/fredagsol.js"></script>
-<script src="js/onsdagsfika.js"></script>
-<script src="js/when-fika.js"></script>
+<script src="js/happenings.js"></script>
+<script>HAPPENING.initCountdown();</script>
+
 </body>
 </html>
