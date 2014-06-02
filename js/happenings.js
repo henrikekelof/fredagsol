@@ -30,7 +30,7 @@ var H = {};
     happenings = defaultHappenings.slice(0);
 
     function getHappeningsFromUrl(s) {
-            
+
         var i, h, tStart, tEnd;
 
         if (s.substring(0, 1) === '#') {
@@ -42,14 +42,14 @@ var H = {};
         // Check if input is predefined happening
         if (s.length === 1 && s[0].split(';').length === 1) {
             for (i = 0; i < happenings.length; i += 1) {
-                if (happenings[i].name === s[0]) {
+                if (happenings[i].name === decodeURIComponent(s[0])) {
                     happenings = [happenings[i]];
                     return;
                 }
             }
             return;
         }
-        
+
         for (i = 0; i < s.length; i += 1) {
             h = s[i].split(';');
             tStart = h[0].split('-');
@@ -73,7 +73,7 @@ var H = {};
                 }
             });
         }
-        
+
     }
 
     function Happening(h) {
@@ -92,7 +92,7 @@ var H = {};
         this.name = h.name;
 
         this.startDate = function () {
-            
+
             var now = new Date(),
                 start = getDate(h.start),
                 end = getDate(h.end);
@@ -102,7 +102,7 @@ var H = {};
             }
 
             return start;
-            
+
         };
 
         this.endDate  = function () {
@@ -117,7 +117,7 @@ var H = {};
             return end;
 
         };
-        
+
         this.isHappening = function () {
             var now = new Date();
             return (happening.startDate() <= now && happening.endDate() > now);
@@ -130,7 +130,7 @@ var H = {};
     }
 
     function getNextHappening() {
-        
+
         var i, nextHappening, previousDate, currentDate;
 
         if (H.happenings.length === 1) {
@@ -141,13 +141,13 @@ var H = {};
         nextHappening = H.happenings[0];
 
         for (i = 1; i < H.happenings.length; i += 1) {
-            
+
             if (H.happenings[i].isHappening()) {
                 return H.happenings[i];
             }
-            
+
             currentDate = H.happenings[i].startDate();
-            
+
             if (currentDate < previousDate) {
                 nextHappening = H.happenings[i];
             }
@@ -181,13 +181,13 @@ var H = {};
 
 
 (function (win, doc) {
-    
+
     'use strict';
 
     var happeningContainer, clockContainer, nowContainer, notNowContainer,
         happening, isCounting, happeningStartDate,
         d, h, m, s;
-    
+
     happeningContainer = doc.getElementById('happening');
     clockContainer = doc.getElementById('clock');
     nowContainer = doc.getElementById('now');
@@ -255,7 +255,7 @@ var H = {};
         }
 
     };
-      
+
     // Is it now?
 
     function checkForHappeningEnd() {
@@ -285,7 +285,7 @@ var H = {};
 
         H.setSingleHappening();
         happening = H.getNextHappening();
-    
+
         nowContainer.style.display = 'none';
         notNowContainer.style.display = 'block';
         doc.getElementById('now-label-1').innerHTML = happening.name;
@@ -293,9 +293,8 @@ var H = {};
         doc.title = 'Is it ' + happening.name + '?';
 
         checkForHappening();
-        
+
     };
 
-    
-}(window, document));
 
+}(window, document));
