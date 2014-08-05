@@ -13,17 +13,17 @@ var H = {};
         {
             name: 'Fredagsöl',
             start: { d: 5, h: 16, m: 30, s: 0 },
-            end: { d: 5, h: 23, m: 59, s: 59 }
+            end: { d: 5, h: 23, m: 59, s: 11 }
         },
         {
             name: 'Onsdagsfika',
             start: { d: 3, h: 15, m: 0, s: 0 },
-            end: { d: 3, h: 16, m: 0, s: 0 }
+            end: { d: 3, h: 15, m: 30, s: 11 }
         },
         {
             name: 'Måndagsfrukost',
             start: { d: 1, h: 8, m: 30, s: 0 },
-            end: { d: 1, h: 9, m: 0, s: 0 }
+            end: { d: 1, h: 9, m: 0, s: 11 }
         }
     ];
 
@@ -131,27 +131,24 @@ var H = {};
 
     function getNextHappening() {
 
-        var i, nextHappening, previousDate, currentDate;
+        var i, nextHappening, diff,
+            now  = new Date(),
+            smallestDiff = 605000000; // More than one week
 
-        if (H.happenings.length === 1) {
-            return H.happenings[0];
-        }
-
-        previousDate = H.happenings[0].startDate();
-        nextHappening = H.happenings[0];
-
-        for (i = 1; i < H.happenings.length; i += 1) {
-
+        
+        for (i = 0; i < H.happenings.length; i += 1) {
+            
+            // Happening now?
             if (H.happenings[i].isHappening()) {
                 return H.happenings[i];
             }
 
-            currentDate = H.happenings[i].startDate();
+            diff = H.happenings[i].startDate() - now;
 
-            if (currentDate < previousDate) {
+            if (diff < smallestDiff) {
                 nextHappening = H.happenings[i];
+                smallestDiff = diff;
             }
-
         }
 
         return nextHappening;
