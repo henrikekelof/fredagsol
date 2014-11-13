@@ -24,6 +24,11 @@ var H = {};
             name: 'Måndagsfrukost',
             start: { d: 1, h: 8, m: 30, s: 0 },
             end: { d: 1, h: 9, m: 0, s: 11 }
+        },
+        {
+            name: 'i Loungen',
+            start: { d: 1, h: 14, m: 0, s: 0 },
+            end: { d: 1, h: 14, m: 59, s: 11 }
         }
     ];
 
